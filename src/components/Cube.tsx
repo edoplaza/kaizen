@@ -31,6 +31,8 @@ const CheckerMaterial = shaderMaterial(
   `
 )
 
+CheckerMaterial.key = 'checkerMaterial'
+
 extend({ CheckerMaterial })
 
 export const Cube = forwardRef(function Cube(_, ref) {

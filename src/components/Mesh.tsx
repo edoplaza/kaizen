@@ -2,9 +2,15 @@ import { forwardRef, useEffect } from 'react'
 import { useLoader } from '@react-three/fiber'
 import { useGLTF } from '@react-three/drei'
 import { EXRLoader } from 'three/examples/jsm/loaders/EXRLoader'
-import { TextureLoader, MeshStandardMaterial } from 'three'
+import {
+  TextureLoader,
+  MeshStandardMaterial,
+  Object3D,
+  Mesh as ThreeMesh,
+} from 'three'
 
-export const MeshModel = forwardRef(function MeshModel(_, ref) {
+// ForwardRef type annotation
+export const MeshModel = forwardRef<Object3D>(function MeshModel(_, ref) {
   const { scene } = useGLTF('/models/vase.glb')
 
   const diffuseMap = useLoader(TextureLoader, '/textures/vase_diffuse.jpg')
@@ -13,15 +19,15 @@ export const MeshModel = forwardRef(function MeshModel(_, ref) {
   const metalnessMap = useLoader(EXRLoader, '/textures/vase_metal.exr')
 
   useEffect(() => {
-    scene.traverse((child) => {
-      if (child.isMesh) {
+    scene.traverse((child: Object3D) => {
+      if (child instanceof ThreeMesh) {
         child.castShadow = true
         child.receiveShadow = true
         child.material = new MeshStandardMaterial({
           map: diffuseMap,
-          roughnessMap: roughnessMap,
-          metalnessMap: metalnessMap,
-          normalMap: normalMap,
+          roughnessMap,
+          metalnessMap,
+          normalMap,
           metalness: 1,
           roughness: 0.2,
         })

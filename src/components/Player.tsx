@@ -10,8 +10,8 @@ export function Player() {
   const [isDragging, setIsDragging] = useState(false)
 
   useEffect(() => {
-    const handleMouseDown = (event) => {
-      if (event.target.closest('[class*="leva"]')) return
+    const handleMouseDown = (event: MouseEvent) => {
+      if ((event.target as HTMLElement)?.closest('[class*="leva"]')) return
       setIsDragging(true)
     }
 
@@ -27,10 +27,13 @@ export function Player() {
   }, [])
 
   useEffect(() => {
-    const handleMouseMove = (event) => {
+    const handleMouseMove = (event: MouseEvent) => {
       if (!isDragging) return
       const deltaX =
-        event.movementX || event.mozMovementX || event.webkitMovementX || 0
+        event.movementX ||
+        (event as any).mozMovementX ||
+        (event as any).webkitMovementX ||
+        0
       const rotationSpeed = 0.002
       rotation.current -= deltaX * rotationSpeed
     }

@@ -1,4 +1,6 @@
-export function Lights() {
+import { FC } from 'react'
+
+export const Lights: FC = () => {
   return (
     <>
       <ambientLight intensity={0.1} />

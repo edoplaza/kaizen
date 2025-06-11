@@ -1,4 +1,17 @@
-export function SceneInfoPanel({ dynamicData }) {
+import { FC } from 'react'
+
+// Type for the dynamic object data
+type ObjectData = {
+  position: string[]
+  vertexCount: number
+}
+
+// Props for SceneInfoPanel
+type SceneInfoPanelProps = {
+  dynamicData: Record<string, ObjectData>
+}
+
+export const SceneInfoPanel: FC<SceneInfoPanelProps> = ({ dynamicData }) => {
   return (
     <div
       style={{
