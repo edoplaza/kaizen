@@ -11,15 +11,23 @@ import { Lights } from './Lights'
 import { useLevaSceneControls } from '../../hooks/useLevaSceneControls'
 import { SceneInfoPanel } from './SceneInfoPanel'
 import { SceneRuntimeData } from './SceneRuntimeData'
+import { Mesh } from 'three'
+
+type ObjectData = {
+  position: string[]
+  vertexCount: number
+}
+
+type DynamicData = Record<string, ObjectData>
 
 export function SceneContainer() {
   const sceneState = useLevaSceneControls()
 
-  const sphereRef = useRef()
-  const cubeRef = useRef()
-  const meshRef = useRef()
+  const sphereRef = useRef<Mesh | null>(null)
+  const cubeRef = useRef<Mesh | null>(null)
+  const meshRef = useRef<Mesh | null>(null)
 
-  const [dynamicData, setDynamicData] = useState({})
+  const [dynamicData, setDynamicData] = useState<DynamicData>({})
 
   return (
     <div style={{ position: 'relative', width: '100vw', height: '100vh' }}>

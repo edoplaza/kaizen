@@ -1,7 +1,6 @@
 import { KeyboardControlsWrapper } from './components/scene/KeyboardControlsWrapper'
 import { SceneContainer } from './components/scene/SceneContainer'
 import { Loader as DreiLoader } from '@react-three/drei'
-import './App.css'
 
 function App() {
   return (
