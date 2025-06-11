@@ -10,7 +10,11 @@ export function Player() {
   const [isDragging, setIsDragging] = useState(false)
 
   useEffect(() => {
-    const handleMouseDown = () => setIsDragging(true)
+    const handleMouseDown = (event) => {
+      if (event.target.closest('[class*="leva"]')) return
+      setIsDragging(true)
+    }
+
     const handleMouseUp = () => setIsDragging(false)
 
     window.addEventListener('mousedown', handleMouseDown)
