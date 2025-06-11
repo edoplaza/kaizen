@@ -1,7 +1,9 @@
+import { useState, forwardRef } from 'react'
 import { useFrame } from '@react-three/fiber'
-import { forwardRef } from 'react'
 
 export const Sphere = forwardRef(function Sphere({ color, speed }, ref) {
+  const [clicked, setClicked] = useState(false)
+
   useFrame(({ clock }) => {
     const elapsed = clock.getElapsedTime()
     const y = 0.7 + Math.sin(elapsed * speed) * 0.2
@@ -11,9 +13,18 @@ export const Sphere = forwardRef(function Sphere({ color, speed }, ref) {
   })
 
   return (
-    <mesh ref={ref} position={[-1.8, 0.5, 2]} castShadow>
+    <mesh
+      ref={ref}
+      position={[-1.8, 0.5, 2]}
+      castShadow
+      onClick={() => setClicked(!clicked)}
+    >
       <sphereGeometry args={[0.5, 32, 32]} />
-      <meshStandardMaterial color={color} metalness={1} roughness={0} />
+      <meshStandardMaterial
+        color={clicked ? 'hotpink' : color}
+        metalness={1}
+        roughness={0}
+      />
     </mesh>
   )
 })
