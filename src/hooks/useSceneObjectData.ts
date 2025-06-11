@@ -2,13 +2,11 @@ import { useFrame } from '@react-three/fiber'
 import { useState } from 'react'
 import { Mesh } from 'three'
 
-// Define the data structure returned for each object
 type ObjectData = {
   position: string[]
   vertexCount: number
 }
 
-// Define the expected shape of the refs object
 type MeshRefs = Record<string, React.RefObject<Mesh>>
 
 export function useSceneObjectData(

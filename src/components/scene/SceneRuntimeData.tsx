@@ -1,6 +1,5 @@
 import { useFrame } from '@react-three/fiber'
 import { Mesh, Object3D } from 'three'
-import { FC } from 'react'
 
 type ObjectData = {
   position: string[]
@@ -17,10 +16,7 @@ type SceneRuntimeDataProps = {
   onUpdate: (data: DynamicData) => void
 }
 
-export const SceneRuntimeData: FC<SceneRuntimeDataProps> = ({
-  refs,
-  onUpdate,
-}) => {
+export const SceneRuntimeData = ({ refs, onUpdate }: SceneRuntimeDataProps) => {
   useFrame(() => {
     const newData: Record<string, ObjectData> = {}
 
@@ -28,7 +24,6 @@ export const SceneRuntimeData: FC<SceneRuntimeDataProps> = ({
       if (ref.current) {
         let target: Mesh | Object3D = ref.current
         if (target.type === 'Group' && target.children.length > 0) {
-          // Find first mesh child
           const meshChild = target.children.find((c) => (c as Mesh).isMesh) as
             | Mesh
             | undefined

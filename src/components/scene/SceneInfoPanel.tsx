@@ -1,17 +1,13 @@
-import { FC } from 'react'
-
-// Type for the dynamic object data
 type ObjectData = {
   position: string[]
   vertexCount: number
 }
 
-// Props for SceneInfoPanel
 type SceneInfoPanelProps = {
   dynamicData: Record<string, ObjectData>
 }
 
-export const SceneInfoPanel: FC<SceneInfoPanelProps> = ({ dynamicData }) => {
+export const SceneInfoPanel = ({ dynamicData }: SceneInfoPanelProps) => {
   return (
     <div
       style={{

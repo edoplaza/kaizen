@@ -13,7 +13,6 @@ import { SceneInfoPanel } from './SceneInfoPanel'
 import { SceneRuntimeData } from './SceneRuntimeData'
 import { Mesh } from 'three'
 
-// Define the dynamic data type for your info panel
 type ObjectData = {
   position: string[]
   vertexCount: number
@@ -24,7 +23,6 @@ type DynamicData = Record<string, ObjectData>
 export function SceneContainer() {
   const sceneState = useLevaSceneControls()
 
-  // Refs for 3D objects
   const sphereRef = useRef<Mesh | null>(null)
   const cubeRef = useRef<Mesh | null>(null)
   const meshRef = useRef<Mesh | null>(null)

@@ -9,7 +9,6 @@ import {
   Mesh as ThreeMesh,
 } from 'three'
 
-// ForwardRef type annotation
 export const MeshModel = forwardRef<Object3D>(function MeshModel(_, ref) {
   const { scene } = useGLTF('/models/vase.glb')
 
