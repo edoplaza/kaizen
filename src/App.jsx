@@ -1,5 +1,6 @@
 import { KeyboardControlsWrapper } from './components/scene/KeyboardControlsWrapper'
 import { SceneContainer } from './components/scene/SceneContainer'
+import { Loader as DreiLoader } from '@react-three/drei'
 import './App.css'
 
 function App() {
@@ -8,6 +9,7 @@ function App() {
       <KeyboardControlsWrapper>
         <SceneContainer />
       </KeyboardControlsWrapper>
+      <DreiLoader /> {/* This will track loading status of Drei assets */}
     </div>
   )
 }
