@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, forwardRef } from 'react'
 import { shaderMaterial } from '@react-three/drei'
 import { extend } from '@react-three/fiber'
 import * as THREE from 'three'
@@ -34,11 +34,12 @@ const CheckerMaterial = shaderMaterial(
 
 extend({ CheckerMaterial })
 
-export function Cube() {
+export const Cube = forwardRef(function Cube(_, ref) {
   const [hovered, setHovered] = useState(false)
 
   return (
     <mesh
+      ref={ref}
       position={[2, 0.5, 1.5]}
       castShadow
       onPointerOver={() => setHovered(true)}
@@ -47,10 +48,10 @@ export function Cube() {
       <boxGeometry args={[1, 1, 1]} />
       <checkerMaterial
         attach="material"
-        color1={hovered ? 'hotpink' : 'white'} // change color on hover
-        color2={hovered ? 'blue' : 'orange'} // change color on hover
+        color1={hovered ? 'hotpink' : 'white'}
+        color2={hovered ? 'blue' : 'orange'}
         scale={10}
       />
     </mesh>
   )
-}
+})

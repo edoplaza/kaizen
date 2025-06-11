@@ -9,7 +9,7 @@ function App() {
       <KeyboardControlsWrapper>
         <SceneContainer />
       </KeyboardControlsWrapper>
-      <DreiLoader /> {/* This will track loading status of Drei assets */}
+      <DreiLoader />
     </div>
   )
 }
