@@ -1,4 +1,13 @@
-export function SceneInfoPanel({ dynamicData }) {
+type ObjectData = {
+  position: string[]
+  vertexCount: number
+}
+
+type SceneInfoPanelProps = {
+  dynamicData: Record<string, ObjectData>
+}
+
+export const SceneInfoPanel = ({ dynamicData }: SceneInfoPanelProps) => {
   return (
     <div
       style={{

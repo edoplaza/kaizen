@@ -28,8 +28,10 @@ const CheckerMaterial = shaderMaterial(
       vec3 color = mix(color1, color2, checker);
       gl_FragColor = vec4(color, 1.0);
     }
-  `
+  `,
 )
+
+CheckerMaterial.key = 'checkerMaterial'
 
 extend({ CheckerMaterial })
 

@@ -2,29 +2,31 @@ import { useState } from 'react'
 import { useControls, button } from 'leva'
 import { INITIAL_SCENE_VALUES } from './constants'
 
-export function useLevaSceneControls() {
-  const [sceneState, setSceneState] = useState(INITIAL_SCENE_VALUES)
+type SceneState = typeof INITIAL_SCENE_VALUES
 
-  const [_, setLeva] = useControls(() => ({
+export function useLevaSceneControls(): SceneState {
+  const [sceneState, setSceneState] = useState<SceneState>(INITIAL_SCENE_VALUES)
+
+  const [, setLeva] = useControls(() => ({
     showSphere: {
       value: INITIAL_SCENE_VALUES.showSphere,
       label: 'Show Sphere',
-      onChange: (v) => setSceneState((s) => ({ ...s, showSphere: v })),
+      onChange: (v: boolean) => setSceneState((s) => ({ ...s, showSphere: v })),
     },
     showCube: {
       value: INITIAL_SCENE_VALUES.showCube,
       label: 'Show Cube',
-      onChange: (v) => setSceneState((s) => ({ ...s, showCube: v })),
+      onChange: (v: boolean) => setSceneState((s) => ({ ...s, showCube: v })),
     },
     showMesh: {
       value: INITIAL_SCENE_VALUES.showMesh,
       label: 'Show Mesh',
-      onChange: (v) => setSceneState((s) => ({ ...s, showMesh: v })),
+      onChange: (v: boolean) => setSceneState((s) => ({ ...s, showMesh: v })),
     },
     sphereColor: {
       value: INITIAL_SCENE_VALUES.sphereColor,
       label: 'Sphere Color',
-      onChange: (v) => setSceneState((s) => ({ ...s, sphereColor: v })),
+      onChange: (v: string) => setSceneState((s) => ({ ...s, sphereColor: v })),
     },
     sphereSpeed: {
       value: INITIAL_SCENE_VALUES.sphereSpeed,
@@ -32,7 +34,7 @@ export function useLevaSceneControls() {
       max: 10,
       step: 0.1,
       label: 'Bounce Speed',
-      onChange: (v) => setSceneState((s) => ({ ...s, sphereSpeed: v })),
+      onChange: (v: number) => setSceneState((s) => ({ ...s, sphereSpeed: v })),
     },
     resetAll: button(() => {
       setSceneState(INITIAL_SCENE_VALUES)

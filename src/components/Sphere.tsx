@@ -1,13 +1,22 @@
 import { useState, forwardRef } from 'react'
 import { useFrame } from '@react-three/fiber'
+import { Mesh } from 'three'
 
-export const Sphere = forwardRef(function Sphere({ color, speed }, ref) {
+type SphereProps = {
+  color: string
+  speed: number
+}
+
+export const Sphere = forwardRef<Mesh, SphereProps>(function Sphere(
+  { color, speed },
+  ref,
+) {
   const [clicked, setClicked] = useState(false)
 
   useFrame(({ clock }) => {
     const elapsed = clock.getElapsedTime()
     const y = 0.7 + Math.sin(elapsed * speed) * 0.2
-    if (ref?.current) {
+    if (ref && 'current' in ref && ref.current) {
       ref.current.position.y = y
     }
   })
