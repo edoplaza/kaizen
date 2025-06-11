@@ -1,6 +1,9 @@
 import { Canvas } from '@react-three/fiber'
 import { Ground } from './components/Ground'
 import { Cube } from './components/Cube'
+
+import { Sphere } from './components/Sphere'
+import { Torus } from './components/Torus'
 import { Player } from './components/Player'
 import { KeyboardControls, Sky } from '@react-three/drei'
 
@@ -25,6 +28,8 @@ function App() {
 
           <Ground />
           <Cube />
+          <Sphere />
+          <Torus />
           <Player />
         </Canvas>
       </KeyboardControls>
