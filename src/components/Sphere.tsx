@@ -9,7 +9,7 @@ type SphereProps = {
 
 export const Sphere = forwardRef<Mesh, SphereProps>(function Sphere(
   { color, speed },
-  ref
+  ref,
 ) {
   const [clicked, setClicked] = useState(false)
 

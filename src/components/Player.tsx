@@ -27,13 +27,12 @@ export function Player() {
   }, [])
 
   useEffect(() => {
-    const handleMouseMove = (event: MouseEvent) => {
+    const handleMouseMove = (
+      event: MouseEvent & { mozMovementX?: number; webkitMovementX?: number },
+    ) => {
       if (!isDragging) return
       const deltaX =
-        event.movementX ||
-        (event as any).mozMovementX ||
-        (event as any).webkitMovementX ||
-        0
+        event.movementX || event.mozMovementX || event.webkitMovementX || 0
       const rotationSpeed = 0.002
       rotation.current -= deltaX * rotationSpeed
     }

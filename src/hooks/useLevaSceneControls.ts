@@ -2,13 +2,12 @@ import { useState } from 'react'
 import { useControls, button } from 'leva'
 import { INITIAL_SCENE_VALUES } from './constants'
 
-// Define the scene state type based on INITIAL_SCENE_VALUES
 type SceneState = typeof INITIAL_SCENE_VALUES
 
 export function useLevaSceneControls(): SceneState {
   const [sceneState, setSceneState] = useState<SceneState>(INITIAL_SCENE_VALUES)
 
-  const [_, setLeva] = useControls(() => ({
+  const [, setLeva] = useControls(() => ({
     showSphere: {
       value: INITIAL_SCENE_VALUES.showSphere,
       label: 'Show Sphere',

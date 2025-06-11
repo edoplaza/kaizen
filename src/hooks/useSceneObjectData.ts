@@ -11,7 +11,9 @@ type ObjectData = {
 // Define the expected shape of the refs object
 type MeshRefs = Record<string, React.RefObject<Mesh>>
 
-export function useSceneObjectData(meshRefs: MeshRefs): Record<string, ObjectData> {
+export function useSceneObjectData(
+  meshRefs: MeshRefs,
+): Record<string, ObjectData> {
   const [data, setData] = useState<Record<string, ObjectData>>({})
 
   useFrame(() => {

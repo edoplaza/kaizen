@@ -2,17 +2,12 @@ import { useFrame } from '@react-three/fiber'
 import { Mesh, Object3D } from 'three'
 import { FC } from 'react'
 
-// Type for the runtime object data
 type ObjectData = {
   position: string[]
   vertexCount: number
 }
 type DynamicData = Record<string, ObjectData>
 
-// Type for the refs prop (string keys → Mesh refs)
-type MeshRefs = Record<string, React.RefObject<Mesh | Object3D>>
-
-// Props for this component
 type SceneRuntimeDataProps = {
   refs: {
     sphere: React.RefObject<Mesh | null>
