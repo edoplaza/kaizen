@@ -1,6 +1,4 @@
-// components/SceneRuntimeData.jsx
 import { useFrame } from '@react-three/fiber'
-import { useEffect } from 'react'
 
 export function SceneRuntimeData({ refs, onUpdate }) {
   useFrame(() => {
@@ -8,7 +6,6 @@ export function SceneRuntimeData({ refs, onUpdate }) {
     Object.entries(refs).forEach(([key, ref]) => {
       if (ref.current) {
         let target = ref.current
-        // If it's a group (like GLTF scenes), grab the first mesh child
         if (target.isGroup && target.children.length > 0) {
           target = target.children.find((c) => c.isMesh) || target
         }
@@ -22,6 +19,5 @@ export function SceneRuntimeData({ refs, onUpdate }) {
     onUpdate(newData)
   })
 
-  // This component renders nothing, it’s only for the R3F hooks
   return null
 }

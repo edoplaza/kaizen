@@ -19,7 +19,6 @@ export function SceneContainer() {
   const cubeRef = useRef()
   const meshRef = useRef()
 
-  // Dynamic runtime data for the panel
   const [dynamicData, setDynamicData] = useState({})
 
   return (
@@ -43,7 +42,6 @@ export function SceneContainer() {
 
           <Player />
 
-          {/* Collect runtime data INSIDE Canvas */}
           <SceneRuntimeData
             refs={{
               sphere: sphereRef,
@@ -55,7 +53,6 @@ export function SceneContainer() {
         </Suspense>
       </Canvas>
 
-      {/* Info Panel */}
       <SceneInfoPanel dynamicData={dynamicData} />
     </div>
   )

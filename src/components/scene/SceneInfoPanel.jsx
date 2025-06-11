@@ -1,4 +1,3 @@
-// components/SceneInfoPanel.jsx
 export function SceneInfoPanel({ dynamicData }) {
   return (
     <div
